@@ -30,14 +30,20 @@ service:
   port: 8080
 
 ingress:
-  enabled: false
+  enabled: true
   annotations: {}
   hosts:
     - host: app.com
       paths: []
   tls: []
 
-resources: {}
+resources:
+  limits:
+    cpu: "1"
+    memory: 512Mi
+  requests:
+    cpu: "1"
+    memory: 512Mi
 
 autoscaling:
   enabled: false
