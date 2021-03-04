@@ -29,15 +29,9 @@ steps:
     image: alpine/helm:3.5.2
     environment:
       KUBECONFIG_FILE:
-        from_secret: development-kubeconfig
+        from_secret: main-kubeconfig
     commands:
       - echo "nameserver 1.1.1.1" > /etc/resolv.conf
-      - curl https://google.com -v || true
-      - curl https://www.drone.io -v || true
-      - curl github.io -v || true
-      - curl cloudmobility.io -v || true
-      - curl https://apiserver.agile-dingo.cns.eu1.cloudmobility.io/version -v --insecure || true
-      - curl https://keycloak.eu1.cloudmobility.io -v || true
       - mkdir -p ~/.kube/
       - echo "$KUBECONFIG_FILE" > ~/.kube/config
       - chmod go-r ~/.kube/config
