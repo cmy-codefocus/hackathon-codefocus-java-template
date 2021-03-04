@@ -36,7 +36,7 @@ steps:
       - mkdir -p ~/.kube/
       - echo "$KUBECONFIG_FILE" > ~/.kube/config
       - chmod go-r ~/.kube/config
-      - helm upgrade --install app ./helm/app --set image.tag=${DRONE_COMMIT_SHA:-default} --set ingress.hosts[0].host=$${INGRESS_HOST}
+      - helm upgrade --install app ./helm/app --set image.tag=${DRONE_COMMIT_SHA:-default}
     depends_on:
       - build
     when:

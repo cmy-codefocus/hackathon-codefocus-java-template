@@ -33,7 +33,7 @@ ingress:
   enabled: true
   annotations: {}
   hosts:
-    - host: app.com
+    - host: app.cloud.eu1.cloudmobility.io
       paths:
         - /
   tls: []
