@@ -11,15 +11,8 @@ steps:
       - mvn clean test
     depends_on:
       - lint
----
-kind: pipeline
-name: build
-steps:
   - name: build
     image: plugins/docker
-    environment:
-      TOKEN:
-        from_secret: one_of_the_tokens
     settings:
       username:
         from_secret: docker_hub_username
@@ -28,6 +21,20 @@ steps:
       repo: codefocus/app
       tags:
         - ${DRONE_COMMIT_SHA:-default}
-trigger:
-  branch:
-    - main
+    when:
+      branch:
+        - main
+        - environment/*
+  - name: deploy
+    image: alpine/helm:3.5.2
+    environment:
+      KUBECONFIG:
+        from_secret: development-kubeconfig
+    commands:
+      - echo "helming"
+    depends_on:
+      - build
+    when:
+      branch:
+        - main
+        - environment/*
