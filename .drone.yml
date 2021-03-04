@@ -11,4 +11,39 @@ steps:
       - mvn clean test
     depends_on:
       - lint
-
+---
+kind: pipeline
+name: build
+steps:
+  - name: init
+    image: eu.gcr.io/ccp-prod-239910/docker.io/alpine:3.12.0
+    commands:
+      - echo "init"
+    volumes:
+      - name: credentials
+        path: /credentials/
+  - name: build
+    image: gcr.io/kaniko-project/executor:v1.2.0
+    command:
+      - --snapshotMode
+      - redo
+      - --dockerfile
+      - Dockerfile
+      - --target
+      - production
+      - --context
+      - .
+      - --cache
+      - --destination
+      - codefocus/app:${DRONE_COMMIT_SHA:-default}
+    depends_on:
+      - int
+    volumes:
+      - name: credentials
+        path: /credentials/
+trigger:
+  branch:
+    - main
+volumes:
+  - name: credentials
+    temp: {}

@@ -4,6 +4,6 @@ COPY src /app/src
 WORKDIR /app
 RUN mvn clean package -DskipTests=true
 
-FROM openjdk:11-jdk-slim
+FROM openjdk:11-jdk-slim AS production
 COPY --from=builder /app/target/*jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
