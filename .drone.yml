@@ -28,6 +28,7 @@ steps:
   - name: deploy
     image: alpine/helm:3.5.2
     environment:
+      INGRESS_HOST: app.cloud.eu1.cloudmobility.io
       KUBECONFIG_FILE:
         from_secret: main-kubeconfig
     commands:
@@ -35,7 +36,7 @@ steps:
       - mkdir -p ~/.kube/
       - echo "$KUBECONFIG_FILE" > ~/.kube/config
       - chmod go-r ~/.kube/config
-      - helm upgrade --install app ./helm/app --set image.tag=${DRONE_COMMIT_SHA:-default}
+      - helm upgrade --install app ./helm/app --set image.tag=${DRONE_COMMIT_SHA:-default} --set ingress.hosts[0].host=$${INGRESS_HOST}
     depends_on:
       - build
     when:
