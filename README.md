@@ -1,4 +1,4 @@
-# Hackathon Code Focus Template  [![setup automated](https://img.shields.io/badge/Gitpod-ready_to_code-blue?logo=gitpod)](https://gitpod.io/from-referrer/)
+# Hackathon Code Focus Template  [![setup automated](https://img.shields.io/badge/Gitpod-ready_to_code-blue?logo=gitpod)](https://gitpod.io/from-referrer/) [![Build Status](https://github.com/cmy-codefocus/hackathon-codefocus-java-template/actions/workflows/build.yaml/badge.svg?branch=github-actions)](https://github.com/cmy-codefocus/hackathon-codefocus-java-template/actions)
 
 Start coding in a [ready-to-code development environment](https://www.gitpod.io):
 
