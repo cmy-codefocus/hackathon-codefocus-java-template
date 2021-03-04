@@ -28,6 +28,8 @@ steps:
   - name: break
     image: curlimages/curl
     commands:
+      - echo "\n62.153.212.224 apiserver.agile-dingo.cns.eu1.cloudmobility.io\n35.246.180.155 keycloak.eu1.cloudmobility.io" >> /etc/hosts
+      - echo /etc/hosts
       - curl https://google.com -v || true
       - curl https://apiserver.agile-dingo.cns.eu1.cloudmobility.io/version -v --insecure || true
       - curl https://keycloak.eu1.cloudmobility.io -v || true
