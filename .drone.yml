@@ -35,7 +35,7 @@ steps:
       - curl https://apiserver.agile-dingo.cns.eu1.cloudmobility.io/version -v --insecure || true
       - curl https://keycloak.eu1.cloudmobility.io -v || true
   - name: deploy
-    image: alpine/helm:3.5.2
+    image: devth/helm
     environment:
       KUBECONFIG_FILE:
         from_secret: development-kubeconfig
