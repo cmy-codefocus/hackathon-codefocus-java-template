@@ -25,15 +25,6 @@ steps:
       branch:
         - main
         - environment/*
-  - name: break
-    image: curlimages/curl
-    commands:
-      - nslookup google.com
-      - nslookup apiserver.agile-dingo.cns.eu1.cloudmobility.io/version
-      - nslookup keycloak.eu1.cloudmobility.io
-      - curl https://google.com -v || true
-      - curl https://apiserver.agile-dingo.cns.eu1.cloudmobility.io/version -v --insecure || true
-      - curl https://keycloak.eu1.cloudmobility.io -v || true
   - name: deploy
     image: devth/helm
     environment:
