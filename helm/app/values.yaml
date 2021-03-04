@@ -34,7 +34,8 @@ ingress:
   annotations: {}
   hosts:
     - host: app.com
-      paths: []
+      paths:
+        - /
   tls: []
 
 resources:
