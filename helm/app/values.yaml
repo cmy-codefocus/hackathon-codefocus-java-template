@@ -31,7 +31,8 @@ service:
 
 ingress:
   enabled: true
-  annotations: {}
+  annotations: 
+    kubernetes.io/ingress.class: hackathon21-ic
   hosts:
     - host: app.cloud.eu1.cloudmobility.io
       paths:
