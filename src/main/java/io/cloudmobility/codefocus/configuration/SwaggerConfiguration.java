@@ -15,14 +15,21 @@ public class SwaggerConfiguration {
 
     @Bean
     public Docket api() {
-        return new Docket(DocumentationType.OAS_30).apiInfo(apiInfo()).groupName("api").select()
-                .apis(RequestHandlerSelectors.basePackage(Application.class.getPackageName())).build();
+        return new Docket(DocumentationType.OAS_30)
+                .apiInfo(apiInfo())
+                .groupName("api")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage(Application.class.getPackageName()))
+                .build();
     }
 
     @Bean
     public Docket actuators() {
-        return new Docket(DocumentationType.OAS_30).apiInfo(apiInfo()).groupName("management").select()
-                .paths(PathSelectors.regex(".*/actuator.*")).build();
+        return new Docket(DocumentationType.OAS_30)
+                .apiInfo(apiInfo()).groupName("management")
+                .select()
+                .paths(PathSelectors.regex(".*/actuator.*"))
+                .build();
     }
 
     private ApiInfo apiInfo() {
