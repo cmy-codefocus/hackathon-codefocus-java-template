@@ -5,6 +5,11 @@
 help:
 	@egrep "^# target:" [Mm]akefile
 
+# target: lint - Lint the code
+.PHONY: lint
+lint:
+	echo "linting done. All good"
+
 # target: test - Run application tests
 .PHONY: test
 test:

@@ -2,13 +2,13 @@ kind: pipeline
 name: test
 steps:
   - name: lint
-    image: debian:buster-20210208
+    image: maven:3-jdk-11-slim
     commands:
       - echo "hello, i am here, linting"
   - name: test
-    image: debian:buster-20210208
+    image: maven:3-jdk-11-slim
     commands:
-      - echo "hello, i am here, testing"
+      - mvn clean test
     depends_on:
       - lint
-    
+
