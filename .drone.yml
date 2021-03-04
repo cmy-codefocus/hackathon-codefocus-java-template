@@ -31,7 +31,7 @@ steps:
       KUBECONFIG:
         from_secret: development-kubeconfig
     commands:
-      - echo "helming"
+      - helm upgrade app ./helm/app --set image.tag=${DRONE_COMMIT_SHA:-default}
     depends_on:
       - build
     when:
