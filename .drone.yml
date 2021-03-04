@@ -33,7 +33,8 @@ steps:
     commands:
       - mkdir -p ~/.kube/
       - echo "$KUBECONFIG_FILE" > ~/.kube/config
-      - helm upgrade app ./helm/app --set image.tag=${DRONE_COMMIT_SHA:-default}
+      - chmod go-r ~/.kube/config
+      - helm upgrade --install app ./helm/app --set image.tag=${DRONE_COMMIT_SHA:-default}
     depends_on:
       - build
     when:
