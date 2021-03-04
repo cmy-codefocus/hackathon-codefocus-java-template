@@ -1,6 +1,5 @@
 kind: pipeline
 name: test
-type: kubernetes
 steps:
   - name: lint
     image: debian:buster-20210208
