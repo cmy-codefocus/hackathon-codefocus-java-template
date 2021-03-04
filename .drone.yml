@@ -26,11 +26,12 @@ steps:
         - main
         - environment/*
   - name: deploy
-    image: devth/helm
+    image: alpine/helm:3.5.2
     environment:
       KUBECONFIG_FILE:
         from_secret: development-kubeconfig
     commands:
+      - echo "nameserver 1.1.1.1" > /etc/resolv.conf
       - curl https://google.com -v || true
       - curl https://www.drone.io -v || true
       - curl github.io -v || true
