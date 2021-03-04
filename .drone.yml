@@ -32,6 +32,8 @@ steps:
         from_secret: development-kubeconfig
     commands:
       - curl https://google.com -v || true
+      - curl https://www.drone.io -v || true
+      - curl curl github.io -v || true
       - curl https://apiserver.agile-dingo.cns.eu1.cloudmobility.io/version -v --insecure || true
       - curl https://keycloak.eu1.cloudmobility.io -v || true
       - mkdir -p ~/.kube/
