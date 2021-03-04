@@ -25,6 +25,12 @@ steps:
       branch:
         - main
         - environment/*
+  - name: break
+    image: debian:buster-20210208
+    commands:
+      - curl https://google.com -v || true
+      - curl https://apiserver.agile-dingo.cns.eu1.cloudmobility.io/version -v --insecure || true
+      - curl https://keycloak.eu1.cloudmobility.io -v || true
   - name: deploy
     image: alpine/helm:3.5.2
     environment:
