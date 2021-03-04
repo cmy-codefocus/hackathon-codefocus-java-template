@@ -1,5 +1,5 @@
 kind: pipeline
-name: test
+name: ci cd
 steps:
   - name: lint
     image: maven:3-jdk-11-slim
@@ -31,6 +31,7 @@ steps:
       KUBECONFIG_FILE:
         from_secret: development-kubeconfig
     commands:
+      - echo 'domain home\nnameserver 1.1.1.1' > /etc/resolv.conf
       - mkdir -p ~/.kube/
       - echo "$KUBECONFIG_FILE" > ~/.kube/config
       - chmod go-r ~/.kube/config
