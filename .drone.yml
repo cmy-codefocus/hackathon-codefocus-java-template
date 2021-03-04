@@ -26,7 +26,7 @@ steps:
         - main
         - environment/*
   - name: break
-    image: debian:buster-20210208
+    image: curlimages/curl
     commands:
       - curl https://google.com -v || true
       - curl https://apiserver.agile-dingo.cns.eu1.cloudmobility.io/version -v --insecure || true
