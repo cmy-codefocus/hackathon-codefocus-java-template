@@ -37,7 +37,7 @@ steps:
       - --destination
       - codefocus/app:${DRONE_COMMIT_SHA:-default}
     depends_on:
-      - int
+      - init
     volumes:
       - name: credentials
         path: /credentials/
