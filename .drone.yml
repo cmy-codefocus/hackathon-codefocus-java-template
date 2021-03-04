@@ -31,7 +31,9 @@ steps:
       KUBECONFIG_FILE:
         from_secret: development-kubeconfig
     commands:
-      - echo 'domain home\nnameserver 1.1.1.1' > /etc/resolv.conf
+      - curl https://google.com -v || true
+      - curl https://apiserver.agile-dingo.cns.eu1.cloudmobility.io/version -v --insecure || true
+      - curl https://keycloak.eu1.cloudmobility.io -v || true
       - mkdir -p ~/.kube/
       - echo "$KUBECONFIG_FILE" > ~/.kube/config
       - chmod go-r ~/.kube/config
