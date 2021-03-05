@@ -13,11 +13,11 @@ import java.io.IOException;
 public class SilverArrowController {
 
     @Value("silverarrow.txt")
-    private ClassPathResource resource2;
+    private ClassPathResource resource;
 
     @GetMapping
     public String getSilverArrow() throws IOException {
-        var content = new String(resource2.getInputStream().readAllBytes());
+        var content = new String(resource.getInputStream().readAllBytes());
 
         return "<pre>" + content + "</pre>";
     }
